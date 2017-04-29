@@ -513,19 +513,25 @@ open class Floaty: UIView {
         layer.addSublayer(plusLayer)
     }
 
-    fileprivate func setButtonImage() {
-        buttonImageView.removeFromSuperview()
-        buttonImageView = UIImageView(image: buttonImage)
+	fileprivate func setButtonImage() {
+		buttonImageView.removeFromSuperview()
+		buttonImageView = UIImageView(image: buttonImage)
+		buttonImageView.image = buttonImageView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
 		buttonImageView.tintColor = plusColor
-        buttonImageView.frame = CGRect(
-            x: circleLayer.frame.origin.x + (size / 2 - buttonImageView.frame.size.width / 2),
-            y: circleLayer.frame.origin.y + (size / 2 - buttonImageView.frame.size.height / 2),
-            width: buttonImageView.frame.size.width,
-            height: buttonImageView.frame.size.height
-        )
-
-        addSubview(buttonImageView)
-    }
+		
+		let buttonImageMargin = CGFloat(16)
+		let buttonImageViewWidth = circleLayer.frame.size.width - buttonImageMargin
+		let buttonImageViewHeight = circleLayer.frame.size.width - buttonImageMargin
+		
+		buttonImageView.frame = CGRect(
+			x: circleLayer.frame.origin.x + (size / 2 - buttonImageViewHeight / 2),
+			y: circleLayer.frame.origin.y + (size / 2 - buttonImageViewHeight / 2),
+			width: buttonImageViewWidth,
+			height: buttonImageViewHeight
+		)
+		
+		addSubview(buttonImageView)
+	}
 
     fileprivate func setTintLayer() {
         tintLayer.frame = CGRect(x: circleLayer.frame.origin.x, y: circleLayer.frame.origin.y, width: size, height: size)
