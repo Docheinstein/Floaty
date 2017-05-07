@@ -519,17 +519,17 @@ open class Floaty: UIView {
 		buttonImageView.image = buttonImageView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
 		buttonImageView.tintColor = plusColor
 		
-		let buttonImageMargin = CGFloat(16)
-		let buttonImageViewWidth = circleLayer.frame.size.width - buttonImageMargin
-		let buttonImageViewHeight = circleLayer.frame.size.width - buttonImageMargin
+		let buttonImageMargin = CGFloat(28)
+		let buttonImageViewWidth = frame.size.width - buttonImageMargin
+		let buttonImageViewHeight = frame.size.height - buttonImageMargin
 		
 		buttonImageView.frame = CGRect(
-			x: circleLayer.frame.origin.x + (size / 2 - buttonImageViewHeight / 2),
-			y: circleLayer.frame.origin.y + (size / 2 - buttonImageViewHeight / 2),
+			x: (frame.size.width - buttonImageViewWidth) / 2,
+			y: (frame.size.height - buttonImageViewHeight) / 2,
 			width: buttonImageViewWidth,
 			height: buttonImageViewHeight
 		)
-		
+
 		addSubview(buttonImageView)
 	}
 
