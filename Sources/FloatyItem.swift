@@ -210,6 +210,10 @@ open class FloatyItem: UIView {
         titleLabel.layer.shadowColor = titleShadowColor.cgColor
         titleLabel.layer.shadowOpacity = 0.4
     }
+	
+	open func imageFitButton() {
+		imageSize = CGSize(width: self.size, height: self.size)
+	}
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.count == 1 {
