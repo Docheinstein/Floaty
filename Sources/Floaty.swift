@@ -393,11 +393,16 @@ open class Floaty: UIView {
 	Add item with title and icon.
 	*/
 	@discardableResult
-	open func addItem(_ title: String, icon: UIImage?) -> FloatyItem {
+	open func addItem(_ title: String, icon: UIImage?, fitButton: Bool) -> FloatyItem {
 		let item = FloatyItem()
 		itemDefaultSet(item)
 		item.title = title
 		item.icon = icon
+		
+		if fitButton {
+			item.imageFitButton()
+		}
+		
 		addItem(item: item)
 		return item
 	}
@@ -406,11 +411,16 @@ open class Floaty: UIView {
 	Add item with title and handler.
 	*/
 	@discardableResult
-	open func addItem(title: String, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+	open func addItem(title: String, handler: @escaping ((FloatyItem) -> Void), fitButton: Bool) -> FloatyItem {
 		let item = FloatyItem()
 		itemDefaultSet(item)
 		item.title = title
 		item.handler = handler
+		
+		if fitButton {
+			item.imageFitButton()
+		}
+		
 		addItem(item: item)
 		return item
 	}
@@ -419,12 +429,18 @@ open class Floaty: UIView {
 	Add item with title, icon or handler.
 	*/
 	@discardableResult
-	open func addItem(_ title: String, icon: UIImage?, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+	open func addItem(_ title: String, icon: UIImage?,
+	                  handler: @escaping ((FloatyItem) -> Void), fitButton: Bool) -> FloatyItem {
 		let item = FloatyItem()
 		itemDefaultSet(item)
 		item.title = title
 		item.icon = icon
 		item.handler = handler
+		
+		if fitButton {
+			item.imageFitButton()
+		}
+		
 		addItem(item: item)
 		return item
 	}
@@ -433,10 +449,15 @@ open class Floaty: UIView {
 	Add item with icon.
 	*/
 	@discardableResult
-	open func addItem(icon: UIImage?) -> FloatyItem {
+	open func addItem(icon: UIImage?, fitButton: Bool) -> FloatyItem {
 		let item = FloatyItem()
 		itemDefaultSet(item)
 		item.icon = icon
+		
+		if fitButton {
+			item.imageFitButton()
+		}
+		
 		addItem(item: item)
 		return item
 	}
@@ -445,11 +466,16 @@ open class Floaty: UIView {
 	Add item with icon and handler.
 	*/
 	@discardableResult
-	open func addItem(icon: UIImage?, handler: @escaping ((FloatyItem) -> Void)) -> FloatyItem {
+	open func addItem(icon: UIImage?, handler: @escaping ((FloatyItem) -> Void), fitButton: Bool) -> FloatyItem {
 		let item = FloatyItem()
 		itemDefaultSet(item)
 		item.icon = icon
 		item.handler = handler
+		
+		if fitButton {
+			item.imageFitButton()
+		}
+		
 		addItem(item: item)
 		return item
 	}
