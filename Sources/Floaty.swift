@@ -150,7 +150,13 @@ open class Floaty: UIView {
 	
 	open var friendlyTap: Bool = true
 	
-	open var sticky: Bool = false
+	@IBInspectable open var sticky: Bool = false
+	
+	@IBInspectable open var imageSize: CGFloat = 24 {
+		didSet {
+			self.setNeedsDisplay()
+		}
+	}
 	
 	open static var global: FloatyManager {
 		get {
@@ -554,9 +560,8 @@ open class Floaty: UIView {
 		buttonImageView.image = buttonImageView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
 		buttonImageView.tintColor = plusColor
 		
-		let buttonImageMargin = CGFloat(28)
-		let buttonImageViewWidth = frame.size.width - buttonImageMargin
-		let buttonImageViewHeight = frame.size.height - buttonImageMargin
+		let buttonImageViewWidth = imageSize
+		let buttonImageViewHeight = imageSize
 		
 		buttonImageView.frame = CGRect(
 			x: (frame.size.width - buttonImageViewWidth) / 2,
